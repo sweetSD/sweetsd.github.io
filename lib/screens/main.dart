@@ -37,9 +37,12 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Space(50),
-              YoutubePlayerIFrame(
-                controller: _controller,
-                aspectRatio: 16 / 9,
+              SizedBox(
+                child: YoutubePlayerIFrame(
+                  controller: _controller,
+                  aspectRatio: 16 / 9,
+                ),
+                width: size.width * 0.6,
               ),
               Space(50),
               GridView.builder(
