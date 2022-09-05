@@ -1,11 +1,12 @@
-name: sweetsd-github-io
+name: Flutter Web
 
 on:
   push:
-    branches: master
+    branches: [ master ]
 
 jobs:
   build:
+    name: Build Web
     runs-on: ubuntu-latest
 
     steps:
@@ -13,4 +14,5 @@ jobs:
       - uses: subosito/flutter-action@v1
       - uses: bluefireteam/flutter-gh-pages@v7
         with:
-          baseHref: /
+          targetBranch: main
+          baseHref: /web/
