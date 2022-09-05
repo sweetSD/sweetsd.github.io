@@ -15,4 +15,4 @@ jobs:
       - uses: bluefireteam/flutter-gh-pages@v7
         with:
           targetBranch: main
-          baseHref: /web/
+          baseHref: /
