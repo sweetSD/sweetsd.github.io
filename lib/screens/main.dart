@@ -59,7 +59,7 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
                         child: Column(
                           children: [
                             Expanded(
-                              child: Image.asset('images/test.webp'),
+                              child: Image.asset('images/test.png'),
                             ),
                             TextApple('test image')
                           ],

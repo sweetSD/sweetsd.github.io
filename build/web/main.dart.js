@@ -55332,7 +55332,7 @@ q=A.a8V(A.a([new A.p2(50,p),new A.FK(s,1.7777777777777777,p),new A.p2(50,p),new 
 return new A.zj(r,new A.EC(!0,q,p),new A.bl(30,0,30,0),p)}}
 A.a0f.prototype={
 $2(a,b){var s=null,r=A.bw(0,250)
-return new A.kS(b*150,r,new A.v(0,50),A.oE(A.a8V(A.a([new A.B_(1,B.kC,new A.t7(A.ale(s,s,new A.qR("images/test.webp",s,s)),s),s),A.alT("test image",14,B.t_)],t.E),B.dU,B.eF),s,s),s)},
+return new A.kS(b*150,r,new A.v(0,50),A.oE(A.a8V(A.a([new A.B_(1,B.kC,new A.t7(A.ale(s,s,new A.qR("images/test.png",s,s)),s),s),A.alT("test image",14,B.t_)],t.E),B.dU,B.eF),s,s),s)},
 $S:338}
 A.zj.prototype={
 M(a,b){var s,r,q=null
