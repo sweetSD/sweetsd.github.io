@@ -3,29 +3,22 @@ import 'package:sweetsd_github/widgets/text.dart';
 
 class BaseScreen extends StatelessWidget {
   final AppBar? appBar;
-
   final String title;
-
+  final double titleFontSize;
   final bool centerTitle;
-
   final bool resizeToAvoidBottomInset;
-
   final Widget? body;
-
   final Widget? leading;
-
   final bool useDefaultLeading;
-
   final List<Widget>? actions;
-
   final Widget? bottomNavigationBar;
-
   final EdgeInsets padding;
 
   const BaseScreen(
-      {Key? key,
+      {super.key,
       this.appBar,
       this.title = '',
+      this.titleFontSize = 24,
       this.centerTitle = false,
       this.resizeToAvoidBottomInset = true,
       this.body,
@@ -33,38 +26,14 @@ class BaseScreen extends StatelessWidget {
       this.useDefaultLeading = false,
       this.actions,
       this.bottomNavigationBar,
-      this.padding = EdgeInsets.zero})
-      : super(key: key);
+      this.padding = EdgeInsets.zero});
 
   @override
   Widget build(BuildContext context) {
-    final defLeading = IconButton(
-      onPressed: () {
-        Navigator.pop(context);
-      },
-      icon: Icon(
-        Icons.arrow_back,
-        color: Colors.black,
-      ),
-    );
-
     return Scaffold(
       resizeToAvoidBottomInset: resizeToAvoidBottomInset,
-      appBar: appBar ??
-          AppBar(
-            shadowColor: Color.fromARGB(150, 0, 0, 0),
-            elevation: 30,
-            backgroundColor: Colors.white,
-            title: TextApple(
-              title,
-              size: 18,
-              type: TextType.Bold,
-            ),
-            centerTitle: centerTitle,
-            leading: useDefaultLeading ? defLeading : leading,
-            actions: actions ?? [],
-          ),
-      body: Container(
+      appBar: appBar,
+      body: SizedBox(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Stack(

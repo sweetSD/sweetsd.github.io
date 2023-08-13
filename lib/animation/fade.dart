@@ -7,7 +7,8 @@ class FadeInOffset extends StatefulWidget {
   final Widget child;
 
   const FadeInOffset(
-      {this.delayInMilisecond = 0,
+      {super.key,
+      this.delayInMilisecond = 0,
       this.duration = const Duration(milliseconds: 500),
       this.offset = const Offset(0, 0),
       required this.child});
@@ -31,8 +32,9 @@ class FadeInOffsetState extends State<FadeInOffset>
       setState(() {});
     });
     fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(controller!);
-    offsetAnimation = Tween<Offset>(begin: widget.offset, end: Offset(0, 0))
-        .animate(controller!);
+    offsetAnimation =
+        Tween<Offset>(begin: widget.offset, end: const Offset(0, 0))
+            .animate(controller!);
     Future.delayed(Duration(milliseconds: widget.delayInMilisecond), () {
       if (controller != null) controller!.forward();
     });
@@ -64,7 +66,8 @@ class FadeInScale extends StatefulWidget {
   final Widget child;
 
   const FadeInScale(
-      {this.delayInMilisecond = 0,
+      {super.key,
+      this.delayInMilisecond = 0,
       this.duration = const Duration(milliseconds: 500),
       this.scale = 0.9,
       required this.child});

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Space extends StatelessWidget {
   final double size;
 
-  const Space(this.size);
+  const Space(this.size, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +14,10 @@ class Space extends StatelessWidget {
   }
 }
 
-showSnackBar(context, msg) {
+showSnackBar(context, msg, {delay = 3}) {
   final snackBar = SnackBar(
     content: Text(msg),
-    duration: Duration(seconds: 3),
+    duration: Duration(seconds: delay),
   );
   ScaffoldMessenger.of(context).clearSnackBars();
   ScaffoldMessenger.of(context).showSnackBar(snackBar);

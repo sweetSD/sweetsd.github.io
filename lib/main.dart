@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sweetsd_github/screens/main.dart';
+import 'package:sweetsd_github/screen/main.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,12 +11,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'sweetSD Github',
+      title: "sweetSD's Portfolio",
       theme: ThemeData(
-        primarySwatch: Colors.grey,
-        scaffoldBackgroundColor: Colors.black,
+        primarySwatch: Colors.indigo,
+        scaffoldBackgroundColor: Colors.white,
       ),
-      home: const GithubCollectionPage(title: '무슨 일로 오셨나요'),
+      home: const GithubCollectionPage(),
     );
   }
 }

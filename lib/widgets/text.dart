@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-enum TextType { Light, Regular, Bold, ExtraBold }
+enum TextType { light, regular, bold, extraBold }
 
 FontWeight getWeightFromType(TextType type) {
-  if (type == TextType.Light) return FontWeight.w200;
-  if (type == TextType.Regular) return FontWeight.w400;
-  if (type == TextType.Bold) return FontWeight.w600;
-  if (type == TextType.ExtraBold) return FontWeight.w800;
+  if (type == TextType.light) return FontWeight.w200;
+  if (type == TextType.regular) return FontWeight.w400;
+  if (type == TextType.bold) return FontWeight.w600;
+  if (type == TextType.extraBold) return FontWeight.w800;
   return FontWeight.normal;
 }
 
@@ -24,10 +23,11 @@ class TextApple extends StatelessWidget {
 
   const TextApple(
     this.text, {
-    this.color = Colors.white,
+    super.key,
+    this.color = Colors.black,
     this.size = 14,
     this.height = 1.5,
-    this.type = TextType.Regular,
+    this.type = TextType.regular,
     this.align = TextAlign.center,
     this.overflow = TextOverflow.ellipsis,
     this.shadows = const [],
