@@ -131,14 +131,15 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     FadeInScale(
-                        duration: Duration(milliseconds: 1000),
+                        scale: 0.5,
                         child: _getMiniInfo(
                             'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png',
                             'Github',
                             'https://github.com/sweetSD')),
                     Space(50),
                     FadeInScale(
-                        duration: Duration(milliseconds: 1000),
+                        scale: 0.5,
+                        delayInMilisecond: 300,
                         child: _getMiniInfo(
                             'https://play-lh.googleusercontent.com/NMaV7YqpGLsUHf3drTmT3sfQ2XmFdP7-DyW9vG3AkSWyRv3GWEu9BiRk1jWE1F1ojbA',
                             'Naver Blog',
@@ -146,10 +147,14 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
                   ],
                 ),
                 Space(50),
-                _getProjectBox(
-                    'https://media.tenor.com/eIyjRDX-_NkAAAAC/takanashi-hoshino-blue-archive.gif',
-                    '프로젝트 이름',
-                    '설명'),
+                FadeInOffset(
+                  offset: const Offset(0, 50),
+                  delayInMilisecond: 600,
+                  child: _getProjectBox(
+                      'https://media.tenor.com/eIyjRDX-_NkAAAAC/takanashi-hoshino-blue-archive.gif',
+                      '프로젝트 이름',
+                      '설명'),
+                )
               ],
             ),
             Space(50),
