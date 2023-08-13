@@ -62,7 +62,7 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
     );
   }
 
-  Widget _getMiniInfo(String imageName, String name, String url) {
+  Widget _getMiniInfo(String imageUrl, String name, String url) {
     var size = MediaQuery.of(context).size;
 
     return GestureDetector(
@@ -79,7 +79,7 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
               children: [
                 SizedBox(
                   width: 150,
-                  child: Image.asset('images/$imageName'),
+                  child: Image.network(imageUrl),
                 ),
                 Expanded(
                     child: FittedBox(
@@ -132,12 +132,16 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
                   children: [
                     FadeInScale(
                         duration: Duration(milliseconds: 1000),
-                        child: _getMiniInfo('ic_github.png', 'Github',
+                        child: _getMiniInfo(
+                            'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png',
+                            'Github',
                             'https://github.com/sweetSD')),
                     Space(50),
                     FadeInScale(
                         duration: Duration(milliseconds: 1000),
-                        child: _getMiniInfo('ic_naver_blog.png', 'Naver Blog',
+                        child: _getMiniInfo(
+                            'https://play-lh.googleusercontent.com/NMaV7YqpGLsUHf3drTmT3sfQ2XmFdP7-DyW9vG3AkSWyRv3GWEu9BiRk1jWE1F1ojbA',
+                            'Naver Blog',
                             'https://blog.naver.com/sweets125')),
                   ],
                 ),
