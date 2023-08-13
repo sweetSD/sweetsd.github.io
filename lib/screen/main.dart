@@ -26,7 +26,7 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
     ),
   );
 
-  Widget _getProjectBox(String imageName, String name, String description) {
+  Widget _getProjectBox(String imageUrl, String name, String description) {
     return SizedBox(
       width: 1200,
       height: 150,
@@ -37,8 +37,9 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
             children: [
               SizedBox(
                 width: 150,
-                child: Image.asset('images/$imageName'),
+                child: Image.network(imageUrl),
               ),
+              Space(15),
               Expanded(
                   child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 16),
@@ -141,7 +142,10 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
                   ],
                 ),
                 Space(50),
-                _getProjectBox('test.png', '프로젝트 이름', '설명'),
+                _getProjectBox(
+                    'https://media.tenor.com/eIyjRDX-_NkAAAAC/takanashi-hoshino-blue-archive.gif',
+                    '프로젝트 이름',
+                    '설명'),
               ],
             ),
             Space(50),
