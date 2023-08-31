@@ -12,10 +12,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "sweetSD's Portfolio",
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
-        scaffoldBackgroundColor: Colors.white,
-      ),
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
       home: const GithubCollectionPage(),
     );
   }

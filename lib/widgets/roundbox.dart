@@ -5,27 +5,27 @@ class RoundBox extends StatelessWidget {
       {super.key,
       this.child,
       this.circular = 15,
-      this.shadowColor = const Color(0xffcccccc),
       this.blurRadius = 1.0,
       this.spreadRadius = 1.0,
       this.offset = const Offset(0, 1)});
 
   final Widget? child;
   final double circular;
-  final Color shadowColor;
   final double blurRadius;
   final double spreadRadius;
   final Offset offset;
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
       decoration: BoxDecoration(
-          color: Colors.white,
+          color: isDarkMode ? Colors.grey[800] : Colors.white,
           borderRadius: BorderRadius.circular(circular),
           boxShadow: [
             BoxShadow(
-                color: shadowColor,
+                color: isDarkMode ? Colors.black : const Color(0xffcccccc),
                 blurRadius: blurRadius,
                 spreadRadius: spreadRadius,
                 offset: offset)

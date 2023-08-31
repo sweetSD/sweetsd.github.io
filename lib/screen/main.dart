@@ -19,43 +19,49 @@ class GithubCollectionPage extends StatefulWidget {
 
 class _GithubCollectionPageState extends State<GithubCollectionPage> {
   final _controller = YoutubePlayerController(
-    initialVideoId: 'ZuttYdmPfzU',
+    initialVideoId: 'kFmYbMaszK8',
     params: YoutubePlayerParams(
       showControls: true,
       showFullscreenButton: true,
     ),
   );
 
-  Widget _getProjectBox(String imageUrl, String name, String description) {
-    return SizedBox(
-      width: 1200,
-      height: 150,
-      child: RoundBox(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-          child: Row(
-            children: [
-              SizedBox(
-                width: 150,
-                child: Image.network(imageUrl),
-              ),
-              Space(15),
-              Expanded(
-                  child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 16),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    TextApple(name),
-                    SizedBox(
-                      child: Divider(color: Colors.grey, thickness: 1.0),
-                    ),
-                    TextApple(description),
-                  ],
+  Widget _getProjectBox(String imageUrl, String name, String description,
+      {String url = ''}) {
+    return GestureDetector(
+      onTap: () {
+        launchUrl(Uri.parse(url));
+      },
+      child: SizedBox(
+        width: 1200,
+        height: 150,
+        child: RoundBox(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 150,
+                  child: Image.network(imageUrl),
                 ),
-              )),
-            ],
+                Space(15),
+                Expanded(
+                    child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 16),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TextApple(name),
+                      SizedBox(
+                        child: Divider(color: Colors.grey, thickness: 1.0),
+                      ),
+                      TextApple(description),
+                    ],
+                  ),
+                )),
+              ],
+            ),
           ),
         ),
       ),
@@ -117,7 +123,7 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
             ),
             Space(50),
             SizedBox(
-              width: size.width * 0.6,
+              width: size.width * 0.3,
               child: YoutubePlayerIFrame(
                 controller: _controller,
                 aspectRatio: 16 / 9,
@@ -151,10 +157,20 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
                   offset: const Offset(0, 50),
                   delayInMilisecond: 600,
                   child: _getProjectBox(
+                      'https://storage.googleapis.com/cms-storage-bucket/a9d6ce81aee44ae017ee.png',
+                      'Word Master - 단어짱',
+                      '구글 스프레드 시트와 연동하여 저장된 영단어, 일단어를 보여주고 랜덤 퀴즈를 통해 단어 암기에 도움을 줍니다.',
+                      url: 'https://sweetsd.github.io/word-master/'),
+                ),
+                Space(50),
+                FadeInOffset(
+                  offset: const Offset(0, 50),
+                  delayInMilisecond: 600,
+                  child: _getProjectBox(
                       'https://media.tenor.com/eIyjRDX-_NkAAAAC/takanashi-hoshino-blue-archive.gif',
                       '프로젝트 이름',
                       '설명'),
-                )
+                ),
               ],
             ),
             Space(50),
@@ -162,6 +178,7 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
               'Thank you for coming.',
               size: 24,
             ),
+            Space(50),
           ],
         ),
       ),

@@ -24,7 +24,7 @@ class TextApple extends StatelessWidget {
   const TextApple(
     this.text, {
     super.key,
-    this.color = Colors.black,
+    this.color,
     this.size = 14,
     this.height = 1.5,
     this.type = TextType.regular,
