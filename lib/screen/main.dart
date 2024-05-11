@@ -1,7 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:sweetsd_github/animation/fade.dart';
+import 'package:sweetsd_github/data/project.dart';
 import 'package:sweetsd_github/widgets/basescreen.dart';
 import 'package:sweetsd_github/widgets/roundbox.dart';
 import 'package:sweetsd_github/widgets/text.dart';
@@ -11,7 +13,15 @@ import 'package:url_launcher/url_launcher_string.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 class GithubCollectionPage extends StatefulWidget {
-  const GithubCollectionPage({Key? key}) : super(key: key);
+  const GithubCollectionPage(
+      this.github, this.blog, this.gameList, this.appList,
+      {Key? key})
+      : super(key: key);
+
+  final String github;
+  final String blog;
+  final List<Project> gameList;
+  final List<Project> appList;
 
   @override
   State<GithubCollectionPage> createState() => _GithubCollectionPageState();
@@ -26,15 +36,19 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
     ),
   );
 
-  Widget _getProjectBox(String imageUrl, String name, String description,
-      {String url = ''}) {
+  Widget _getProjectBox(
+      String? imageUrl, String? name, String? description, String? url) {
+    var size = MediaQuery.of(context).size;
+
     return GestureDetector(
       onTap: () {
-        launchUrl(Uri.parse(url));
+        if (url != null) {
+          launchUrl(Uri.parse(url));
+        }
       },
       child: SizedBox(
-        width: 1200,
-        height: 150,
+        width: size.width * 0.4,
+        height: 200,
         child: RoundBox(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -42,24 +56,32 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
               children: [
                 SizedBox(
                   width: 150,
-                  child: Image.network(imageUrl),
+                  child: imageUrl != null && imageUrl.isNotEmpty
+                      ? Image.network(
+                          imageUrl,
+                          fit: BoxFit.fitHeight,
+                        )
+                      : Image.asset('assets/images/test.png',
+                          fit: BoxFit.fitHeight),
                 ),
                 Space(15),
                 Expanded(
-                    child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 16),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      TextApple(name),
+                      TextApple(name ?? "Unknown"),
                       SizedBox(
                         child: Divider(color: Colors.grey, thickness: 1.0),
                       ),
-                      TextApple(description),
+                      TextApple(
+                        description ?? "Unknown",
+                        align: TextAlign.left,
+                        height: 2,
+                      ),
                     ],
                   ),
-                )),
+                ),
               ],
             ),
           ),
@@ -76,30 +98,17 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
         await launchUrlString(url);
       },
       child: SizedBox(
-        width: max(size.width * 0.1, 100),
-        height: max(size.width * 0.13, 130),
-        child: RoundBox(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-            child: Column(
-              children: [
-                SizedBox(
-                  width: 150,
-                  child: Image.network(imageUrl),
-                ),
-                Expanded(
-                    child: FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: TextApple(
-                    name,
-                    size: 24,
-                  ),
-                ))
-              ],
+          width: max(size.width * 0.08, 130),
+          height: max(size.width * 0.08, 130),
+          child: RoundBox(
+            circular: 100,
+            blurRadius: 5,
+            spreadRadius: 2,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(100),
+              child: Image.network(imageUrl),
             ),
-          ),
-        ),
-      ),
+          )),
     );
   }
 
@@ -112,7 +121,7 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
       width: size.width,
       height: size.height,
       child: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 50, vertical: 50),
+        padding: EdgeInsets.symmetric(horizontal: 150, vertical: 50),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -156,21 +165,68 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
                 FadeInOffset(
                   offset: const Offset(0, 50),
                   delayInMilisecond: 600,
-                  child: _getProjectBox(
-                      'https://storage.googleapis.com/cms-storage-bucket/a9d6ce81aee44ae017ee.png',
-                      'Word Master - 단어짱',
-                      '구글 스프레드 시트와 연동하여 저장된 영단어, 일단어를 보여주고 랜덤 퀴즈를 통해 단어 암기에 도움을 줍니다.',
-                      url: 'https://sweetsd.github.io/word-master/'),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      TextApple(
+                        '게임',
+                        size: 38,
+                        type: TextType.bold,
+                      ),
+                      TextApple(
+                        '앱',
+                        size: 38,
+                        type: TextType.bold,
+                      ),
+                    ],
+                  ),
                 ),
+                Space(30),
+                ListView.separated(
+                    shrinkWrap: true,
+                    itemCount:
+                        max(widget.gameList.length, widget.appList.length),
+                    itemBuilder: ((context, index) {
+                      var game = index < widget.gameList.length
+                          ? widget.gameList[index]
+                          : null;
+                      var app = index < widget.appList.length
+                          ? widget.appList[index]
+                          : null;
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(
+                            child: game != null
+                                ? FadeInOffset(
+                                    offset: const Offset(0, 50),
+                                    delayInMilisecond: 600,
+                                    child: _getProjectBox(
+                                      game.imageUrl,
+                                      game.name,
+                                      game.description,
+                                      game.clickUrl,
+                                    ))
+                                : SizedBox(),
+                          ),
+                          SizedBox(
+                            child: app != null
+                                ? FadeInOffset(
+                                    offset: const Offset(0, 50),
+                                    delayInMilisecond: 600,
+                                    child: _getProjectBox(
+                                      app.imageUrl,
+                                      app.name,
+                                      app.description,
+                                      app.clickUrl,
+                                    ))
+                                : SizedBox(),
+                          ),
+                        ],
+                      );
+                    }),
+                    separatorBuilder: (context, index) => Space(50)),
                 Space(50),
-                FadeInOffset(
-                  offset: const Offset(0, 50),
-                  delayInMilisecond: 600,
-                  child: _getProjectBox(
-                      'https://media.tenor.com/eIyjRDX-_NkAAAAC/takanashi-hoshino-blue-archive.gif',
-                      '프로젝트 이름',
-                      '설명'),
-                ),
               ],
             ),
             Space(50),

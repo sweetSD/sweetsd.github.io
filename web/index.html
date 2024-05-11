@@ -48,7 +48,7 @@
           serviceWorkerVersion: serviceWorkerVersion,
         }
       }).then(function(engineInitializer) {
-        return engineInitializer.initializeEngine();
+        return engineInitializer.initializeEngine({ renderer:"html" });
       }).then(function(appRunner) {
         return appRunner.runApp();
       });
