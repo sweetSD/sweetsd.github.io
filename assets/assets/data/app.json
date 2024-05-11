@@ -1,0 +1,20 @@
+[
+    {
+        "name": "너구리 로또",
+        "clickUrl": "https://play.google.com/store/apps/details?id=com.studiouvu.lotto",
+        "imageUrl": "https://play-lh.googleusercontent.com/7jQWtOr8f-1CJq0B6BmvdXkgqXS6AmVygdCJ73zrEyQjE4jZizHCgghawL1qPePD6gc=w240-h480-rw",
+        "description": "Unity로 개발한 앱 프로젝트입니다.\n전체적인 로직을 개발하였습니다.\n다양한 분석 및 번호 생성 기능을 제작하였습니다."
+    },
+    {
+        "name": "100% 로또",
+        "clickUrl": "https://github.com/sweetSD/lotto",
+        "imageUrl": "https://github.com/sweetSD/lotto/blob/main/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png?raw=true",
+        "description": "Flutter로 개발한 앱 프로젝트입니다.\n로또 당첨번호 조회, 행운 번호 추첨, 당첨 번호 분석, 결과 확인 등 기능을 사용할 수 있습니다."
+    },
+    {
+        "name": "애니24",
+        "clickUrl": "https://github.com/sweetSD/ani24",
+        "imageUrl": "https://github.com/sweetSD/ani24/blob/master/assets/image/main_logo.png?raw=true",
+        "description": "플러터 공부용으로 제작한 웹 크롤링 앱입니다.\nUrl 기반으로 웹 페이지를 파싱하여 앱에서 UI로 보여주는 형식의 어플리케이션입니다."
+    }
+]
