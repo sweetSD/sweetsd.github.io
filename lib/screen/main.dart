@@ -1,14 +1,13 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:sweetsd_github/animation/fade.dart';
 import 'package:sweetsd_github/data/project.dart';
+import 'package:sweetsd_github/screen/info.dart';
 import 'package:sweetsd_github/widgets/basescreen.dart';
-import 'package:sweetsd_github/widgets/roundbox.dart';
+import 'package:sweetsd_github/widgets/sweetsd_widgets.dart';
 import 'package:sweetsd_github/widgets/text.dart';
 import 'package:sweetsd_github/widgets/widgets.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
@@ -35,82 +34,6 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
       showFullscreenButton: true,
     ),
   );
-
-  Widget _getProjectBox(
-      String? imageUrl, String? name, String? description, String? url) {
-    var size = MediaQuery.of(context).size;
-
-    return GestureDetector(
-      onTap: () {
-        if (url != null) {
-          launchUrl(Uri.parse(url));
-        }
-      },
-      child: SizedBox(
-        width: size.width * 0.4,
-        height: 200,
-        child: RoundBox(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 150,
-                  child: imageUrl != null && imageUrl.isNotEmpty
-                      ? Image.network(
-                          imageUrl,
-                          fit: BoxFit.fitHeight,
-                        )
-                      : Image.asset('assets/images/test.png',
-                          fit: BoxFit.fitHeight),
-                ),
-                Space(15),
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TextApple(name ?? "Unknown"),
-                      SizedBox(
-                        child: Divider(color: Colors.grey, thickness: 1.0),
-                      ),
-                      TextApple(
-                        description ?? "Unknown",
-                        align: TextAlign.left,
-                        height: 2,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _getMiniInfo(String imageUrl, String name, String url) {
-    var size = MediaQuery.of(context).size;
-
-    return GestureDetector(
-      onTap: () async {
-        await launchUrlString(url);
-      },
-      child: SizedBox(
-          width: max(size.width * 0.08, 130),
-          height: max(size.width * 0.08, 130),
-          child: RoundBox(
-            circular: 100,
-            blurRadius: 5,
-            spreadRadius: 2,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(100),
-              child: Image.network(imageUrl),
-            ),
-          )),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -147,18 +70,20 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
                   children: [
                     FadeInScale(
                         scale: 0.5,
-                        child: _getMiniInfo(
-                            'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png',
-                            'Github',
-                            'https://github.com/sweetSD')),
+                        child: RoundButton(
+                          child: Image.asset('assets/images/ic_github.png'),
+                          onTap: () =>
+                              launchUrlString('https://github.com/sweetSD'),
+                        )),
                     Space(50),
                     FadeInScale(
                         scale: 0.5,
                         delayInMilisecond: 300,
-                        child: _getMiniInfo(
-                            'https://play-lh.googleusercontent.com/NMaV7YqpGLsUHf3drTmT3sfQ2XmFdP7-DyW9vG3AkSWyRv3GWEu9BiRk1jWE1F1ojbA',
-                            'Naver Blog',
-                            'https://blog.naver.com/sweets125')),
+                        child: RoundButton(
+                          child: Image.asset('assets/images/ic_naver_blog.png'),
+                          onTap: () => launchUrlString(
+                              'https://blog.naver.com/sweets125'),
+                        )),
                   ],
                 ),
                 Space(50),
@@ -201,11 +126,21 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
                                 ? FadeInOffset(
                                     offset: const Offset(0, 50),
                                     delayInMilisecond: 600,
-                                    child: _getProjectBox(
-                                      game.imageUrl,
-                                      game.name,
-                                      game.description,
-                                      game.clickUrl,
+                                    child: ProjectButton(
+                                      game.name!,
+                                      game.description!,
+                                      game.imageUrl!,
+                                      onTap: () => {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => InfoPage(
+                                                  game.name!,
+                                                  game.description!,
+                                                  game.imageUrl!,
+                                                  game.media!),
+                                            ))
+                                      },
                                     ))
                                 : SizedBox(),
                           ),
@@ -214,11 +149,21 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
                                 ? FadeInOffset(
                                     offset: const Offset(0, 50),
                                     delayInMilisecond: 600,
-                                    child: _getProjectBox(
-                                      app.imageUrl,
-                                      app.name,
-                                      app.description,
-                                      app.clickUrl,
+                                    child: ProjectButton(
+                                      app.name!,
+                                      app.description!,
+                                      app.imageUrl!,
+                                      onTap: () => {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => InfoPage(
+                                                  app.name!,
+                                                  app.description!,
+                                                  app.imageUrl!,
+                                                  app.media!),
+                                            ))
+                                      },
                                     ))
                                 : SizedBox(),
                           ),
