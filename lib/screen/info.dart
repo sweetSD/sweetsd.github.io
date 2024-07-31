@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:sweetsd_github/data/media.dart';
 import 'package:sweetsd_github/widgets/basescreen.dart';
-import 'package:sweetsd_github/widgets/sweetsd_widgets.dart';
 import 'package:sweetsd_github/widgets/widgets.dart';
+import 'package:sweetsd_github/widgets/common.dart';
 
 class InfoPage extends StatefulWidget {
   const InfoPage(this.name, this.description, this.iconImage, this.media,
@@ -36,21 +36,40 @@ class _InfoPageState extends State<InfoPage> {
             useHoveringAnimation: false,
           ),
           Expanded(
-            child: CarouselSlider.builder(
-              carouselController: carouselController,
-              options: CarouselOptions(
-                viewportFraction: 1.0,
-                onPageChanged: (index, reason) {
-                  setState(() {
-                    currentIndex = index;
-                  });
-                },
+            child: Stack(alignment: Alignment.center, children: [
+              CarouselSlider.builder(
+                carouselController: carouselController,
+                options: CarouselOptions(
+                  aspectRatio: 21 / 9,
+                  viewportFraction: widget.media.length > 1 ? 0.7 : 1.0,
+                  enlargeCenterPage: true,
+                  onPageChanged: (index, reason) {
+                    setState(() {
+                      currentIndex = index;
+                    });
+                  },
+                ),
+                itemCount: widget.media.length,
+                itemBuilder:
+                    (BuildContext context, int itemIndex, int pageViewIndex) =>
+                        Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 0),
+                  child: widget.media[itemIndex].createWidget(),
+                ),
               ),
-              itemCount: widget.media.length,
-              itemBuilder:
-                  (BuildContext context, int itemIndex, int pageViewIndex) =>
-                      widget.media[itemIndex].createWidget(),
-            ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: IconButton(
+                    onPressed: () => carouselController.previousPage(),
+                    icon: Icon(Icons.arrow_left)),
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: IconButton(
+                    onPressed: () => carouselController.previousPage(),
+                    icon: Icon(Icons.arrow_right)),
+              )
+            ]),
           ),
           Space(15),
           Align(
@@ -63,7 +82,7 @@ class _InfoPageState extends State<InfoPage> {
               )),
         ],
       ),
-      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+      padding: EdgeInsets.symmetric(horizontal: 100, vertical: 15),
     );
   }
 }

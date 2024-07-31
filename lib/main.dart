@@ -48,8 +48,7 @@ class MyApp extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             var data = snapshot.data as Data;
-            return GithubCollectionPage(data.info['github'] as String,
-                data.info['blog'] as String, data.gameList, data.appList);
+            return GithubCollectionPage(data.info, data.gameList, data.appList);
           }
           return Container();
         },

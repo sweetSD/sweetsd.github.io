@@ -2,23 +2,22 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:sweetsd_github/animation/fade.dart';
+import 'package:sweetsd_github/data/action.dart';
 import 'package:sweetsd_github/data/project.dart';
 import 'package:sweetsd_github/screen/info.dart';
+import 'package:sweetsd_github/widgets/action.dart';
 import 'package:sweetsd_github/widgets/basescreen.dart';
-import 'package:sweetsd_github/widgets/sweetsd_widgets.dart';
-import 'package:sweetsd_github/widgets/text.dart';
 import 'package:sweetsd_github/widgets/widgets.dart';
-import 'package:url_launcher/url_launcher_string.dart';
+import 'package:sweetsd_github/widgets/text.dart';
+import 'package:sweetsd_github/widgets/common.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 class GithubCollectionPage extends StatefulWidget {
-  const GithubCollectionPage(
-      this.github, this.blog, this.gameList, this.appList,
+  const GithubCollectionPage(this.links, this.gameList, this.appList,
       {Key? key})
       : super(key: key);
 
-  final String github;
-  final String blog;
+  final Map<String, String> links;
   final List<Project> gameList;
   final List<Project> appList;
 
@@ -66,26 +65,16 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    FadeInScale(
-                        scale: 0.5,
-                        child: RoundButton(
-                          child: Image.asset('assets/images/ic_github.png'),
-                          onTap: () =>
-                              launchUrlString('https://github.com/sweetSD'),
-                        )),
-                    Space(50),
-                    FadeInScale(
-                        scale: 0.5,
-                        delayInMilisecond: 300,
-                        child: RoundButton(
-                          child: Image.asset('assets/images/ic_naver_blog.png'),
-                          onTap: () => launchUrlString(
-                              'https://blog.naver.com/sweets125'),
-                        )),
-                  ],
-                ),
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(
+                      widget.links.length,
+                      (index) => FadeInScale(
+                          scale: 0.5,
+                          child: ActionButton(ActionInfo(
+                              type: ActionType.fromJson(
+                                  widget.links.keys.elementAt(index)),
+                              url: widget.links.values.elementAt(index)))),
+                    )),
                 Space(50),
                 FadeInOffset(
                   offset: const Offset(0, 50),
@@ -130,6 +119,7 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
                                       game.name!,
                                       game.description!,
                                       game.imageUrl!,
+                                      actions: game.actions!,
                                       onTap: () => {
                                         Navigator.push(
                                             context,
@@ -153,6 +143,7 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
                                       app.name!,
                                       app.description!,
                                       app.imageUrl!,
+                                      actions: app.actions!,
                                       onTap: () => {
                                         Navigator.push(
                                             context,

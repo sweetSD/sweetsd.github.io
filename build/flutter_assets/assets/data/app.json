@@ -1,37 +1,116 @@
 [
     {
         "name": "너구리 로또",
-        "clickUrl": "https://play.google.com/store/apps/details?id=com.studiouvu.lotto",
         "imageUrl": "https://play-lh.googleusercontent.com/7jQWtOr8f-1CJq0B6BmvdXkgqXS6AmVygdCJ73zrEyQjE4jZizHCgghawL1qPePD6gc=w240-h480-rw",
-        "description": "Unity로 개발한 앱 프로젝트입니다.\n전체적인 로직을 개발하였습니다.\n다양한 분석 및 번호 생성 기능을 제작하였습니다.",
+        "description": "Unity\n\n2인 협업하여 개발한 앱 프로젝트입니다.\n저는 전반적인 로또 번호 분석 및 생성 기능을 개발했습니다.",
+        "actions": [
+            {
+                "type": "playStore",
+                "url": "https://play.google.com/store/apps/details?id=com.studiouvu.lotto"
+            }
+        ],
         "media": [
             {
-                "mediaType": "image",
-                "media": ""
+                "mediaType": "networkImage",
+                "media": "https://play-lh.googleusercontent.com/-Wnb5ZWsClWvDYktGx4Zd3qhTm2z-X5GgI5qSEGfIjhtxWnW3YAowh2svzAYdVLgyyWH=w526-h296-rw"
+            },
+            {
+                "mediaType": "networkImage",
+                "media": "https://play-lh.googleusercontent.com/4alpiDDK-QgbrqtBWOqFU_0MFd9UqvtuqLzOiExD6d3M8O9tEpFWNESWmnMr359Ia0k4=w526-h296-rw"
+            },
+            {
+                "mediaType": "networkImage",
+                "media": "https://play-lh.googleusercontent.com/oG8pbX_JW2lGDpIetFokSnutFwEzBq9VIbyNwmZsDT9MgEvxW1udxnJmf1Wf3F3rnGu_=w526-h296-rw"
+            },
+            {
+                "mediaType": "networkImage",
+                "media": "https://play-lh.googleusercontent.com/mYvV6l9BOg_gxCJM4oWJmSdnuyvSQsaq-mDQMycyvoEG1Scmf1aiwhEJooAvUt_hy_Ld=w526-h296-rw"
+            },
+            {
+                "mediaType": "networkImage",
+                "media": "https://play-lh.googleusercontent.com/JJ1yoaaZWiLE6K3b7Whcd4ag4FdiUwD7XI4FzsbbfvLniQ6zxJCCOhomTTmfr6cbAMT5=w526-h296-rw"
+            },
+            {
+                "mediaType": "networkImage",
+                "media": "https://play-lh.googleusercontent.com/z9SkJjM5GsXjbo6Uwp0ZumF4WrmFaaTFdt4mM0xl6c-zj0SxCwI1FDp5rxh1-eSxem-K=w526-h296-rw"
+            },
+            {
+                "mediaType": "networkImage",
+                "media": "https://play-lh.googleusercontent.com/Zy9daU614K6ytYnA8To_MnHcvK8mjEPgEAhv5ucBbj7Sj4kn93Yo7LbWGhNCGtrLeLE=w526-h296-rw"
             }
         ]
     },
     {
         "name": "100% 로또",
-        "clickUrl": "https://github.com/sweetSD/lotto",
         "imageUrl": "https://raw.githubusercontent.com/sweetSD/lotto/main/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
-        "description": "플러터로 개발한 앱 프로젝트입니다.\n로또 당첨번호 조회, 행운 번호 추첨, 당첨 번호 분석, 결과 확인 등 기능을 사용할 수 있습니다.",
+        "description": "Flutter | 1인\n\n로또 당첨번호 조회, 행운 번호 추첨, 당첨 번호 분석, 결과 확인 등 기능을 개발했습니다.",
+        "actions": [
+            {
+                "type": "github",
+                "url": "https://github.com/sweetSD/lotto"
+            }
+        ],
         "media": [
             {
-                "mediaType": "image",
-                "media": ""
+                "mediaType": "networkImage",
+                "media": "https://camo.githubusercontent.com/197c8b0884add0b1e5a38bcef6a4a6180ac245f7deeaf6c1200192ab48e80656/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f594a75657941686576504e35763557492d66444f32715463586967456a6f564e4d485a375a504d66583075733958475375365148394635414234622d576c7a6765344d"
+            },
+            {
+                "mediaType": "networkImage",
+                "media": "https://camo.githubusercontent.com/069bbf3ed565ea02eac8046b0a95a203b69e80940cc8638bf92a0cb4c74def2e/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f6978326330566141384b34743739465764375f5965714b65515f6475774d38534271705f305f776a6a353138687a47576136367357582d3277707a774c79567a4c5f4d"
+            },
+            {
+                "mediaType": "networkImage",
+                "media": "https://camo.githubusercontent.com/4fc949e71b09f1eab442655bff4125d4831a2560e1f4cac0253b47b7d29d74bd/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f37507a62744a6a4233336e716d654e516857474a305849717766303875786a55317a33563451436257335a70396450417a712d526852347543417039595f5731654e67"
+            },
+            {
+                "mediaType": "networkImage",
+                "media": "https://camo.githubusercontent.com/24d16bc6e69ee19b7bf83192d3b13155b3774a6cb2d02837ecd953e69f935591/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f344d6a356a74487a386e57796845786e5339397a34796a6550304b55394871427372556e6e4b615457582d5463747047365650656f686b435341614e704449625051"
+            },
+            {
+                "mediaType": "networkImage",
+                "media": "https://camo.githubusercontent.com/1525ca66039174cfe34bb4bfe103bf873c4adc3ca7a84c39abd721993920b5a3/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f6662337341657541564b5f62634b364a396d66336632376c30656c64324c72475a52724375664d58395a716f6c71525567477438417a7a613655584a7765553445366b"
             }
         ]
     },
     {
         "name": "애니24",
-        "clickUrl": "https://github.com/sweetSD/ani24",
         "imageUrl": "https://raw.githubusercontent.com/sweetSD/ani24/master/assets/image/main_logo.png",
-        "description": "플러터 공부용으로 제작한 웹 크롤링 앱입니다.\nUrl 기반으로 웹 페이지를 파싱하여 앱에서 UI로 보여주는 형식의 어플리케이션입니다.",
+        "description": "Flutter | 1인\n\n공부용으로 제작한 웹 크롤링 앱입니다.\nUrl 기반으로 웹 페이지를 파싱하여 앱에서 UI로 보여주는 형식의 어플리케이션입니다.",
+        "actions": [
+            {
+                "type": "github",
+                "url": "https://github.com/sweetSD/ani24"
+            }
+        ],
         "media": [
             {
-                "mediaType": "image",
-                "media": ""
+                "mediaType": "networkImage",
+                "media": "https://user-images.githubusercontent.com/29685039/87878048-dfbfb780-ca1c-11ea-9b8f-f94bba1d7672.jpg"
+            },
+            {
+                "mediaType": "networkImage",
+                "media": "https://user-images.githubusercontent.com/29685039/87878050-e3533e80-ca1c-11ea-8b58-645aad8ac4d2.jpg"
+            },
+            {
+                "mediaType": "networkImage",
+                "media": "https://user-images.githubusercontent.com/29685039/87878056-e77f5c00-ca1c-11ea-8371-0e840092f7f7.jpg"
+            },
+            {
+                "mediaType": "networkImage",
+                "media": "https://user-images.githubusercontent.com/29685039/87878059-e9e1b600-ca1c-11ea-89de-d00c985ae2c6.jpg"
+            },
+            {
+                "mediaType": "networkImage",
+                "media": "https://user-images.githubusercontent.com/29685039/87878062-eb12e300-ca1c-11ea-8e2d-58a95aaa4d95.jpg"
+            },
+            {
+                "mediaType": "networkImage",
+                "media": "https://user-images.githubusercontent.com/29685039/87878066-eea66a00-ca1c-11ea-98af-b0e5be63c384.jpg"
+            },
+            {
+                "mediaType": "networkImage",
+                "media": "https://user-images.githubusercontent.com/29685039/87878068-f1a15a80-ca1c-11ea-8218-032697c68b87.jpg"
             }
         ]
     }
