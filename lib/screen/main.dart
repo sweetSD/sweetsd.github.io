@@ -109,9 +109,10 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
               ),
             ),
             SizedBox(
-              height: 50,
-              child: Center(
-                child: TextApple("CONTACT"),
+              height: 35,
+              child: TextApple(
+                "CONTACT",
+                type: TextType.extraBold,
               ),
             ),
             InkWell(
