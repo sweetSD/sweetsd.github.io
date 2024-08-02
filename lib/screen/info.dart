@@ -49,7 +49,7 @@ class _InfoPageState extends State<InfoPage> {
               CarouselSlider.builder(
                 carouselController: carouselController,
                 options: CarouselOptions(
-                  aspectRatio: 21 / 9,
+                  aspectRatio: 24 / 9,
                   viewportFraction: isMediaMultiple ? 0.7 : 1.0,
                   enableInfiniteScroll: isMediaMultiple,
                   enlargeCenterPage: true,
