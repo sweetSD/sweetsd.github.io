@@ -33,24 +33,13 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
     ),
   );
 
-  ListView createProjectList(String listName, List<Project> projects) {
+  ListView createProjectList(List<Project> projects) {
     return ListView.separated(
         physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        itemCount: projects.length + 1,
+        itemCount: projects.length,
         itemBuilder: ((context, index) {
-          if (index == 0) {
-            return FadeInOffset(
-              offset: const Offset(0, 50),
-              delayInMilisecond: 600,
-              child: TextApple(
-                listName,
-                size: 38,
-                type: TextType.bold,
-              ),
-            );
-          }
-          var project = projects[index - 1];
+          var project = projects[index];
           return FadeInOffset(
               offset: const Offset(0, 50),
               delayInMilisecond: 600,
@@ -79,7 +68,6 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     var email = widget.appData.info["email"];
-    var phone = widget.appData.info["phone"];
 
     debugPrint(size.width.toString());
     debugPrint(size.height.toString());
@@ -95,7 +83,7 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             TextApple(
-              "sweetSD's Portfolio",
+              "Portfolio",
               type: TextType.extraBold,
               size: 48,
             ),
@@ -120,6 +108,12 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
                 height: 1,
               ),
             ),
+            SizedBox(
+              height: 50,
+              child: Center(
+                child: TextApple("CONTACT"),
+              ),
+            ),
             InkWell(
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -129,8 +123,9 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
                   Space(5),
                   TextApple(
                     email!,
-                    size: 24,
+                    size: 18,
                     height: 1,
+                    type: TextType.light,
                   ),
                 ],
               ),
@@ -140,30 +135,6 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
                   await launchUrlString(mailUrl);
                 } catch (e) {
                   await Clipboard.setData(ClipboardData(text: email));
-                }
-              },
-            ),
-            Space(10),
-            InkWell(
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.call_outlined),
-                  Space(5),
-                  TextApple(
-                    phone!,
-                    size: 24,
-                    height: 1,
-                  ),
-                ],
-              ),
-              onTap: () async {
-                String phoneUrl = 'tel:$phone';
-                try {
-                  await launchUrlString(phoneUrl);
-                } catch (e) {
-                  await Clipboard.setData(ClipboardData(text: phone));
                 }
               },
             ),
@@ -206,16 +177,16 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
                     crossAxisCount: 2,
                     shrinkWrap: true,
                     children: [
-                      createProjectList('게임', widget.appData.gameList),
-                      createProjectList('앱', widget.appData.appList),
+                      createProjectList(widget.appData.gameList),
+                      createProjectList(widget.appData.appList),
                     ],
                   ),
                 if (size.width < 1500)
                   ListView(
                     shrinkWrap: true,
                     children: [
-                      createProjectList('게임', widget.appData.gameList),
-                      createProjectList('앱', widget.appData.appList),
+                      createProjectList(widget.appData.gameList),
+                      createProjectList(widget.appData.appList),
                     ],
                   ),
                 Space(50),
