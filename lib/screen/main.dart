@@ -152,7 +152,7 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
                 Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: List.generate(
-                      widget.appData.info.length,
+                      widget.appData.links.length,
                       (index) => FadeInScale(
                           scale: 0.5,
                           child: SizedBox(

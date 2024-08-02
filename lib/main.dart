@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "sweetSD's Portfolio",
-      // theme: ThemeData.light(),
+      theme: ThemeData.light(),
       // darkTheme: ThemeData.dark(),
       home: FutureBuilder(
         future: parseData(),
