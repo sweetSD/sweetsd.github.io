@@ -70,7 +70,7 @@ class _ProjectButtonState extends State<ProjectButton> {
                           child: Row(
                             children: [
                               SizedBox(
-                                  width: 150,
+                                  width: size.width * 0.1,
                                   child: Image.network(
                                     imageUrl,
                                     fit: BoxFit.fitHeight,

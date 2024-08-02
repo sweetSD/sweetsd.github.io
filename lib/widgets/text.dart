@@ -21,6 +21,20 @@ class TextApple extends StatelessWidget {
   final List<Shadow> shadows;
   final int? maxLines;
 
+  static TextStyle getStyle(
+          {Color? color,
+          fontSize = 14,
+          height = 1.5,
+          type = TextType.regular,
+          shadows = const <Shadow>[]}) =>
+      TextStyle(
+          color: color,
+          fontSize: fontSize,
+          height: height,
+          fontWeight: getWeightFromType(type),
+          shadows: shadows,
+          fontFamily: 'AppleSDGothicNeo');
+
   const TextApple(
     this.text, {
     super.key,
@@ -41,13 +55,13 @@ class TextApple extends StatelessWidget {
       textAlign: align,
       overflow: overflow,
       maxLines: maxLines,
-      style: TextStyle(
-          color: color,
-          fontSize: size,
-          height: height,
-          fontWeight: getWeightFromType(type),
-          shadows: shadows,
-          fontFamily: 'AppleSDGothicNeo'),
+      style: getStyle(
+        color: color,
+        fontSize: size,
+        height: height,
+        type: type,
+        shadows: shadows,
+      ),
     );
   }
 }

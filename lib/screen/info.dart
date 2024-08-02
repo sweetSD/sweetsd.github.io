@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -25,15 +27,22 @@ class _InfoPageState extends State<InfoPage> {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+
+    var isMediaMultiple = widget.media.length > 1;
+
     return BaseScreen(
       title: widget.name,
       body: Column(
         children: [
-          ProjectButton(
-            widget.name,
-            widget.description,
-            widget.iconImage,
-            useHoveringAnimation: false,
+          SizedBox(
+            width: max(size.width * 0.5, 550),
+            child: ProjectButton(
+              widget.name,
+              widget.description,
+              widget.iconImage,
+              useHoveringAnimation: false,
+            ),
           ),
           Expanded(
             child: Stack(alignment: Alignment.center, children: [
@@ -41,7 +50,8 @@ class _InfoPageState extends State<InfoPage> {
                 carouselController: carouselController,
                 options: CarouselOptions(
                   aspectRatio: 21 / 9,
-                  viewportFraction: widget.media.length > 1 ? 0.7 : 1.0,
+                  viewportFraction: isMediaMultiple ? 0.7 : 1.0,
+                  enableInfiniteScroll: isMediaMultiple,
                   enlargeCenterPage: true,
                   onPageChanged: (index, reason) {
                     setState(() {
@@ -57,32 +67,36 @@ class _InfoPageState extends State<InfoPage> {
                   child: widget.media[itemIndex].createWidget(),
                 ),
               ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: IconButton(
-                    onPressed: () => carouselController.previousPage(),
-                    icon: Icon(Icons.arrow_left)),
-              ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: IconButton(
-                    onPressed: () => carouselController.previousPage(),
-                    icon: Icon(Icons.arrow_right)),
-              )
+              if (isMediaMultiple)
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: IconButton(
+                      onPressed: () => carouselController.previousPage(),
+                      icon: Icon(Icons.arrow_left)),
+                ),
+              if (isMediaMultiple)
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: IconButton(
+                      onPressed: () => carouselController.previousPage(),
+                      icon: Icon(Icons.arrow_right)),
+                )
             ]),
           ),
           Space(15),
-          Align(
-              alignment: Alignment.bottomCenter,
-              child: AnimatedSmoothIndicator(
-                activeIndex: currentIndex,
-                count: widget.media.length,
-                onDotClicked: (index) =>
-                    carouselController.animateToPage(index),
-              )),
+          if (isMediaMultiple)
+            Align(
+                alignment: Alignment.bottomCenter,
+                child: AnimatedSmoothIndicator(
+                  activeIndex: currentIndex,
+                  count: widget.media.length,
+                  onDotClicked: (index) =>
+                      carouselController.animateToPage(index),
+                )),
         ],
       ),
-      padding: EdgeInsets.symmetric(horizontal: 100, vertical: 15),
+      padding:
+          EdgeInsets.symmetric(horizontal: size.width * 0.07, vertical: 15),
     );
   }
 }
