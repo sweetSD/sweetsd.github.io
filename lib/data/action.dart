@@ -1,7 +1,8 @@
 enum ActionType {
   github,
   naverBlog,
-  playStore;
+  playStore,
+  linkedIn;
 
   String toJson() => name;
   static ActionType fromJson(String json) => values.byName(json);

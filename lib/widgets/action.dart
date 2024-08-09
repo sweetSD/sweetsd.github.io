@@ -20,6 +20,7 @@ class _ActionButtonState extends State<ActionButton> {
     if (type == ActionType.github) return Image.asset(Images.github);
     if (type == ActionType.naverBlog) return Image.asset(Images.naverBlog);
     if (type == ActionType.playStore) return Image.asset(Images.playStore);
+    if (type == ActionType.linkedIn) return Image.asset(Images.linkedIn);
     return Container();
   }
 
