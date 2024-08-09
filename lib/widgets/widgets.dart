@@ -58,7 +58,7 @@ class _ProjectButtonState extends State<ProjectButton> {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
               child: SizedBox(
-                  width: size.width * 0.4 - 50,
+                  width: max(size.width * 0.4 - 50, 500),
                   height: 200,
                   child: RoundBox(
                     child: Stack(
@@ -98,7 +98,7 @@ class _ProjectButtonState extends State<ProjectButton> {
                                       child: TextApple(
                                         description,
                                         align: TextAlign.left,
-                                        height: 1.75,
+                                        height: 1.3,
                                         maxLines: 6,
                                       ),
                                     )

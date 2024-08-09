@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 enum TextType { light, regular, bold, extraBold }
@@ -15,6 +16,8 @@ class TextApple extends StatelessWidget {
   final Color? color;
   final double size;
   final double height;
+  final double minSize;
+  final double maxSize;
   final TextType type;
   final TextAlign align;
   final TextOverflow overflow;
@@ -40,6 +43,8 @@ class TextApple extends StatelessWidget {
     super.key,
     this.color,
     this.size = 14,
+    this.minSize = 8,
+    this.maxSize = 30,
     this.height = 1.5,
     this.type = TextType.regular,
     this.align = TextAlign.center,
@@ -50,11 +55,13 @@ class TextApple extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return AutoSizeText(
       text,
       textAlign: align,
       overflow: overflow,
       maxLines: maxLines,
+      minFontSize: minSize,
+      maxFontSize: maxSize,
       style: getStyle(
         color: color,
         fontSize: size,

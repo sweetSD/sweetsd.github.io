@@ -25,7 +25,7 @@
     {
         "name": "C# 서버 제작",
         "imageUrl": "https://i.namu.wiki/i/rR0JqoHBX6JAFtqYRWEFCutl8t2UvLGETvnivzsAzcUgvycs-EDmvEW9Buj8AdK36K7FelgNRzf5gZW2T7vtQA.svg",
-        "description": "Unity | C# | MySQL\n\nC# 데디케이티드 서버를 제작하여 유니티와 연동한 프로젝트입니다.\nDB를 연결하여 로그인 및 랭킹 기능을 구현하였으며\n서버를 통한 매치메이킹, 인게임 동기화 기능을 제작했습니다.",
+        "description": "Unity | C# | MySQL\n\nC# 데디케이티드 서버를 제작하여 유니티와 연동한 프로젝트입니다.\nDB를 연결하여 로그인 및 랭킹 기능을 구현하였으며 서버를 통한 매치메이킹, 인게임 동기화 기능을 제작했습니다.",
         "media": [
             {
                 "mediaType": "video",

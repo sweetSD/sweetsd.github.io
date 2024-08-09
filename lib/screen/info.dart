@@ -29,7 +29,7 @@ class _InfoPageState extends State<InfoPage> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
 
-    var isMediaMultiple = widget.media.length > 1;
+    var isMultipleMedia = widget.media.length > 1;
 
     return BaseScreen(
       title: widget.name,
@@ -50,8 +50,8 @@ class _InfoPageState extends State<InfoPage> {
                 carouselController: carouselController,
                 options: CarouselOptions(
                   aspectRatio: 24 / 9,
-                  viewportFraction: isMediaMultiple ? 0.7 : 1.0,
-                  enableInfiniteScroll: isMediaMultiple,
+                  viewportFraction: isMultipleMedia ? 0.7 : 1.0,
+                  enableInfiniteScroll: isMultipleMedia,
                   enlargeCenterPage: true,
                   onPageChanged: (index, reason) {
                     setState(() {
@@ -67,24 +67,28 @@ class _InfoPageState extends State<InfoPage> {
                   child: widget.media[itemIndex].createWidget(),
                 ),
               ),
-              if (isMediaMultiple)
+              if (isMultipleMedia)
                 Align(
                   alignment: Alignment.centerLeft,
                   child: IconButton(
                       onPressed: () => carouselController.previousPage(),
-                      icon: Icon(Icons.arrow_left)),
+                      icon: Icon(
+                        Icons.arrow_left_outlined,
+                      )),
                 ),
-              if (isMediaMultiple)
+              if (isMultipleMedia)
                 Align(
                   alignment: Alignment.centerRight,
                   child: IconButton(
                       onPressed: () => carouselController.previousPage(),
-                      icon: Icon(Icons.arrow_right)),
+                      icon: Icon(
+                        Icons.arrow_right_outlined,
+                      )),
                 )
             ]),
           ),
           Space(15),
-          if (isMediaMultiple)
+          if (isMultipleMedia)
             Align(
                 alignment: Alignment.bottomCenter,
                 child: AnimatedSmoothIndicator(

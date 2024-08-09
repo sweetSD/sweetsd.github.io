@@ -33,35 +33,31 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
     ),
   );
 
-  ListView createProjectList(List<Project> projects) {
-    return ListView.separated(
-        physics: NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        itemCount: projects.length,
-        itemBuilder: ((context, index) {
-          var project = projects[index];
-          return FadeInOffset(
-              offset: const Offset(0, 50),
-              delayInMilisecond: 600,
-              child: ProjectButton(
-                project.name!,
-                project.description!,
-                project.imageUrl!,
-                actions: project.actions!,
-                onTap: () => {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => InfoPage(
-                            project.name!,
-                            project.description!,
-                            project.imageUrl!,
-                            project.media!),
-                      ))
-                },
-              ));
-        }),
-        separatorBuilder: (context, index) => Space(50));
+  Widget createProjectList(List<Project> projects) {
+    return Column(
+        children: List.generate(projects.length, ((index) {
+      var project = projects[index];
+      return FadeInOffset(
+          offset: const Offset(0, 50),
+          delayInMilisecond: 600,
+          child: ProjectButton(
+            project.name!,
+            project.description!,
+            project.imageUrl!,
+            actions: project.actions!,
+            onTap: () => {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => InfoPage(
+                        project.name!,
+                        project.description!,
+                        project.imageUrl!,
+                        project.media!),
+                  ))
+            },
+          ));
+    })));
   }
 
   @override
@@ -69,16 +65,13 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
     var size = MediaQuery.of(context).size;
     var email = widget.appData.info["email"];
 
-    debugPrint(size.width.toString());
-    debugPrint(size.height.toString());
-
     return BaseScreen(
         body: SizedBox(
       width: size.width,
       height: size.height,
       child: SingleChildScrollView(
         padding:
-            EdgeInsets.symmetric(horizontal: size.width * 0.07, vertical: 50),
+            EdgeInsets.symmetric(horizontal: size.width * 0.05, vertical: 50),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -95,7 +88,7 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
               ),
             ),
             SizedBox(
-              width: size.width * 0.2,
+              width: 400,
               child: YoutubePlayerIFrame(
                 controller: _controller,
                 aspectRatio: 16 / 9,
@@ -156,8 +149,8 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
                       (index) => FadeInScale(
                           scale: 0.5,
                           child: SizedBox(
-                            width: 150,
-                            height: 150,
+                            width: 125,
+                            height: 125,
                             child: ActionButton(ActionInfo(
                                 type: ActionType.fromJson(
                                     widget.appData.links.keys.elementAt(index)),
@@ -173,18 +166,15 @@ class _GithubCollectionPageState extends State<GithubCollectionPage> {
                   ),
                 ),
                 if (size.width >= 1500)
-                  GridView.count(
-                    childAspectRatio: 0.9,
-                    crossAxisCount: 2,
-                    shrinkWrap: true,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       createProjectList(widget.appData.gameList),
                       createProjectList(widget.appData.appList),
                     ],
                   ),
                 if (size.width < 1500)
-                  ListView(
-                    shrinkWrap: true,
+                  Column(
                     children: [
                       createProjectList(widget.appData.gameList),
                       createProjectList(widget.appData.appList),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sweetsd_github/data/app.dart';
 import 'package:sweetsd_github/data/project.dart';
+import 'package:sweetsd_github/screen/error.dart';
 import 'package:sweetsd_github/screen/main.dart';
 
 void main() {
@@ -37,13 +38,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.sizeOf(context);
+
     return MaterialApp(
-      title: "sweetSD's Portfolio",
+      title: "Portfolio",
       theme: ThemeData.light(),
       // darkTheme: ThemeData.dark(),
       home: FutureBuilder(
         future: parseData(),
         builder: (context, snapshot) {
+          if (size.width < 600) {
+            return ErrorPage();
+          }
           if (snapshot.hasData) {
             var data = snapshot.data as AppData;
             return GithubCollectionPage(data);
