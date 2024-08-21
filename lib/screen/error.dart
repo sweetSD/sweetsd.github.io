@@ -21,11 +21,13 @@ class ErrorPage extends StatelessWidget {
           TextApple(
             '모바일 환경은 현재 지원하지 않습니다.',
             size: 24,
+            maxLines: 2,
           ),
           Space(5),
           TextApple(
             'mobile environments are not currently supported.',
             size: 20,
+            maxLines: 3,
           ),
         ],
       ),
